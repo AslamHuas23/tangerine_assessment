@@ -94,7 +94,7 @@ public class LRUCacheService {
             cache.put(key, entry);
             repository.save(entry);
 
-            if (cache.size() >= capacity) {
+            if (cache.size() > capacity) {
                 evictLRU();
             }
 
@@ -143,6 +143,7 @@ public class LRUCacheService {
     }
 
     private void evictLRU() {
+        System.out.println("--------------evict LRU Called------------------------------");
         String lruKey = cache.values()
                 .stream()
                 .min(Comparator.comparing(CacheEntry::getLastAccessedTime))

@@ -29,7 +29,6 @@ public class CacheStatsService {
 
 //     Cached response using "stats" cache region
 //     First call computes size, next calls return cached value
-    @Cacheable(value = "stats")
     public CacheStats getStats() {
         return new CacheStats(
                 cacheService.getSize(),
